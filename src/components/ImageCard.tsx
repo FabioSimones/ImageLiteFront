@@ -1,3 +1,5 @@
+'use client'
+
 interface ImagecardProps {
     nome?: string;
     tamanho?: string;
@@ -8,9 +10,14 @@ interface ImagecardProps {
 export const ImageCard: React.FC<ImagecardProps> = ({
     nome, tamanho, dataUpload, src 
 }: ImagecardProps) => {
+
+    function download(){
+        window.open(src, '_blank')
+    }
+
     return(
         <div className="card relative bg-white rounded-md shadow-md transition-transform ease-in duration-300 transform hover:shadow-lg hover:-translate-y-2">
-            <img src={src} className="h-56 w-full object-cover rounded-t-md " alt=""/>
+            <img onClick={download} src={src} className="h-56 w-full object-cover rounded-t-md " alt=""/>
             <div className="card-body p-4">
                 <h5 className="text-x1 font-semibold mb-2 text-gray-600">
                     {nome}
