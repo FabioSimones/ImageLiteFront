@@ -1,6 +1,20 @@
+import React from "react";
+
 interface TemplateProps{
     children: React.ReactNode
     loading?: boolean
+}
+
+interface RenderIfProps{
+    condition?: boolean;
+    children: React.ReactNode
+}
+
+export const RenderIf: React.FC<RenderIfProps> = ({condition = true, children}) => {
+    if(condition){
+        return children
+    }
+    return false;        
 }
 
 export const Template: React.FC<TemplateProps> = ({children, loading = false}: TemplateProps) => {
