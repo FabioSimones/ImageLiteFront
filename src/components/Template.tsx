@@ -57,8 +57,8 @@ const Loading: React.FC = () => {
 
 const Header: React.FC = () => {
     return(
-        <header className="bg-indigo-950 text-white py-3">
-            <div className="container mx-auto flex justify-between items-center px-4">
+        <header className="bg-indigo-950 text-white py-4">
+            <div className="container mx-auto items-center">
                 <h1 className="text-3xl font-bold">
                     ImageLite
                 </h1>
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
 
 const Footer: React.FC = () => {
     return(
-        <footer className="bg-indigo-950 text-white py-4 mt-8">
+        <footer className="bg-indigo-950 text-white py-4">
             <div className="container mx-auto text-center">
                 Desenvolvido por Fábio Simones
             </div>
