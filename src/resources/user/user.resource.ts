@@ -4,7 +4,7 @@ export class User{
     password?: string;
 }
 
-export class Credemtials{
+export class Credentials{
     email?: string;
     password?: string;
 }
