@@ -20,6 +20,25 @@ class AuthService{
 
         return await response.json();
     }
+
+    async save(user: User) : Promise<void>{
+        const response = await fetch(this.baseURL, {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        console.log("Response Auth.save: ", response)
+
+        if(response.status == 409){
+            const responseError = await response.json();
+            console.log("JSON ERROR: ", responseError)
+            throw new Error(responseError.Error)
+        }
+
+    }
 }
 
 export const userAuth = () => new AuthService();
