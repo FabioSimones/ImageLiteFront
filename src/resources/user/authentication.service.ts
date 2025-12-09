@@ -2,8 +2,8 @@ import { error } from 'console';
 import {AccessToken, Credentials, UserSessionToken, User} from './user.resource'
 
 class AuthService{
-    baseURL: string = 'https://localhost:8080/v1/users';
-    static Auth_Param: string = "_auth";
+    baseURL: string = 'http://localhost:8080/v1/users';
+    static AUTH_PARAM: string = "_auth";
 
     async authenticate(credentials : Credentials) : Promise<AccessToken>{
         const response = await fetch(this.baseURL + "/auth", {
@@ -15,7 +15,7 @@ class AuthService{
         });
 
         if(response.status == 401){
-            throw new Error("User or password are incorrent!")
+            throw new Error("User or password are incorrect!")
         }
 
         return await response.json();
