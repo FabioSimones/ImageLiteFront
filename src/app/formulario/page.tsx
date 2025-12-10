@@ -1,6 +1,6 @@
 'use client'
 
-import { InputText, Template, Button, RenderIf, useNotification, FieldError } from "@/components"
+import { InputText, Template, Button, RenderIf, useNotification, FieldError, AuthenticatedPage } from "@/components"
 import {useImageService} from '@/resources/image/image.service'
 import Link from "next/link"
 import { useFormik } from 'formik'
@@ -49,8 +49,11 @@ export default function FormularioPage(){
         
     }
 
+    
+
     return(
-        <Template loading={loading}>
+        <AuthenticatedPage>
+            <Template loading={loading}>
             <section className="flex flex-col items-center justify-center my-5">
                 <h5 className="mt-3 mb-10 text-3xl font-extrabold tracking-tight text-gray-900">New Image</h5>
                 <form onSubmit={formik.handleSubmit}>
@@ -101,6 +104,7 @@ export default function FormularioPage(){
                 </form>
             </section>
         </Template>
+        </AuthenticatedPage>       
         
     )
 }
