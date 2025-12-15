@@ -1,4 +1,9 @@
-import { ToastContainer } from 'react-toastify';
+'use client'
+
+import { ToastContainer } from 'react-toastify'
+import { userAuth } from '@/resources'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 
 interface TemplateProps {
     children: React.ReactNode;
@@ -54,22 +59,45 @@ const Loading: React.FC = () => {
     )
 }
 
-
 const Header: React.FC = () => {
-    return(
-        <header className="bg-indigo-950 text-white py-4">
-            <div className="container mx-auto items-center">
-                <h1 className="text-3xl font-bold">
-                    ImageLite
-                </h1>
+
+    const auth = userAuth();
+    const user = auth.getUserSession();
+    const router = useRouter();
+
+    function logout(){
+        auth.invalidateSession();
+        router.push("/login");
+    }
+
+    return (
+        <header className="bg-indigo-950 text-white py-3" >
+            <div className="container mx-auto flex justify-between items-center px-4">
+                <Link href="/galeria">
+                    <h1 className="text-3xl font-bold">ImageLite</h1>
+                </Link>
+                <RenderIf condition={!!user}>
+                    <div className="flex items-center">
+                        <div className="relative">
+                            <span className="w-64 py-3 px-6 text-md">
+                                Olá, {user?.name}
+                            </span>
+                            <span className="w-64 py-3 px-6 text-sm">
+                                <a href="#" onClick={logout}>
+                                    Sair
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </RenderIf>
             </div>
         </header>
     )
 }
 
 const Footer: React.FC = () => {
-    return(
-        <footer className="bg-indigo-950 text-white py-4">
+    return (
+        <footer className="bg-indigo-950 text-white py-4 mt-8">
             <div className="container mx-auto text-center">
                 Desenvolvido por Fábio Simones
             </div>

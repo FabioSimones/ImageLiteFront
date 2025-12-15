@@ -4,6 +4,7 @@ import { Template, ImageCard, Button, InputText, useNotification, AuthenticatedP
 import { Image } from '@/resources/image/image.resource';
 import { useImageService } from '@/resources'
 import { useState } from 'react'
+
 import Link from 'next/link';
 
 export default function GaleriaPage(){
@@ -69,6 +70,6 @@ export default function GaleriaPage(){
                     }                     
                 </section>
             </Template>
-        </AuthenticatedPage>            
+        </AuthenticatedPage>
     )
 }
